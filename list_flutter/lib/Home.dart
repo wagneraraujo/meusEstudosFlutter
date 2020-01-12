@@ -34,6 +34,25 @@ class _HomeState extends State<Home> {
             // Map<String, dynamic> item = _itens[indice];
             // print("item ${item["titulo"]}");
             return ListTile(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text(_itens[indice]["titulo"]),
+                        titlePadding: EdgeInsets.all(15),
+                        content: Text(_itens[indice]["Descrição"]),
+                        actions: <Widget>[
+                          FlatButton(
+                            child: Text("Clique aqui"),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          )
+                        ],
+                      );
+                    });
+              },
               title: Text(_itens[indice]["titulo"]),
               subtitle: Text(_itens[indice]["Descrição"]),
             );
